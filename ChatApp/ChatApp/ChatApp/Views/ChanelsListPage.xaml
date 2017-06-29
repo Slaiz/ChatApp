@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ChatApp.Views.ChanelsListPage"
+			 BackgroundColor="{StaticResource MainColor}"
+			 x:Name="page">
+	<Grid BackgroundColor="Fuchsia">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="1*" />
+			<RowDefinition Height="1*" />
+			<RowDefinition Height="6*" />
+		</Grid.RowDefinitions>
+			<Grid BackgroundColor="White"
+						Grid.Row="0"
+						Margin="0, 0, 0, 5">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="7*" />
+				<ColumnDefinition Width="1*" />
+			</Grid.ColumnDefinitions>
+				<Frame Grid.Column="0"
+						BackgroundColor="White"
+						Margin="20, 15"
+						HasShadow="False"
+						HorizontalOptions="Fill"
+						OutlineColor="{StaticResource DarkGrayColor}">
+						<SearchBar Text="{Binding SearchText}"
+									Placeholder="Search by Name"
+									BackgroundColor="White"
+									Margin="0"
+									HorizontalOptions="Fill"
+									VerticalOptions="Fill"/>
+				</Frame>
+				<Image Grid.Column="1"
+						Source="Add"
+						HorizontalOptions="EndAndExpand"/>
+			</Grid>
+		<Label Grid.Row="1"
+				HorizontalTextAlignment="Start"
+				HorizontalOptions="Fill"
+				TextColor="Black"
+				FontSize="24"
+				Margin="0,5"
+				Text="Chats"/>
+		<ListView Grid.Row="2"
+				  ItemsSource="{Binding ChanelsList, Mode=TwoWay}"
+				  HorizontalOptions="Fill"
+				  VerticalOptions="Fill"
+				  SeparatorVisibility="None"
+				  BackgroundColor="Fuchsia">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<ViewCell.View>
+							<Grid HorizontalOptions="Fill"
+									VerticalOptions="Fill"
+									ColumnSpacing="0"
+									RowSpacing="0"
+									Padding="5, 0, 0, 5"
+									x:Name="Item">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="2*" />
+									<ColumnDefinition Width="5*" />
+									<ColumnDefinition Width="1*" />
+								</Grid.ColumnDefinitions>
+								<Grid.RowDefinitions>
+									<RowDefinition Height="1*" />
+									<RowDefinition Height="1*" />
+								</Grid.RowDefinitions>
+								<Image Grid.Row="0"
+									   Grid.RowSpan="2"
+									   Grid.Column="0"
+									   HorizontalOptions="Center"
+									   VerticalOptions="Fill"
+									   Source="{Binding UserImage}"/>
+								<Label Grid.Row="0"
+									   Grid.Column="1"
+									   VerticalOptions="Start"
+									   HorizontalOptions="Start"
+									   Text="{Binding UserName}"/>
+								<Label Grid.Row="1"
+									   Grid.Column="1"
+									   VerticalOptions="End"
+									   HorizontalOptions="Start"
+									   Text="{Binding LastMessege}"/>
+								<Label Grid.Row="0"
+									   Grid.RowSpan="2"
+									   Grid.Column="2"
+									   VerticalOptions="Center"
+									   HorizontalOptions="End"
+									   Text="{Binding MessegeCount}"/>
+								<Grid.GestureRecognizers>
+									<TapGestureRecognizer Command="{Binding  Source={x:Reference page}, Path=BindingContext.NavigateToChatPageCommand}"
+														  CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
+								</Grid.GestureRecognizers>
+							</Grid>
+						</ViewCell.View>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</Grid>
+</ContentPage>

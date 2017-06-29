@@ -1,12 +1,13 @@
 ﻿using System.Windows.Input;
 using Prism.Mvvm;
 using ChatApp.Model;
+using ChatApp.Views;
 using Prism.Commands;
 using Prism.Navigation;
 
 namespace ChatApp.ViewModels {
 	public class LoginPageViewModel : BindableBase {
-		private INavigationService _navigationService;
+		private readonly INavigationService _navigationService;
 		private UserModel _user;
 
 		public LoginPageViewModel(
@@ -26,7 +27,7 @@ namespace ChatApp.ViewModels {
 		public ICommand LogInCommand {
 			get {
 				return new DelegateCommand( async () => {
-					await _navigationService.NavigateAsync( nameof( ViewChanelPageViewModel ) );
+					await _navigationService.NavigateAsync( nameof( ChanelsListPage ) );
 				} );
 			}
 		}

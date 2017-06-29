@@ -14,11 +14,12 @@
 
 			<Style x:Key="BlueButtonStyle" TargetType="Button">
 				<Setter Property="TextColor" Value="White" />
-				<Setter Property="BackgroundColor" Value="#3355CC" />
+				<Setter Property="BackgroundColor" Value="#2196F3" />
 				<Setter Property="BorderRadius" Value="10" />
 				<Setter Property="FontSize" Value="18" />
 			</Style>
 
+			<Color x:Key="DarkGrayColor">#D2D5DA</Color>
 			<Color x:Key="MainColor">#2196F3</Color>
 		</ResourceDictionary>
 	</Application.Resources>

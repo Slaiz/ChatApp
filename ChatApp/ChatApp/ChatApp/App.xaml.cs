@@ -1,6 +1,5 @@
-﻿using Prism.Unity;
-using ChatApp.Views;
-using Xamarin.Forms;
+﻿using ChatApp.Views;
+using Prism.Unity;
 
 namespace ChatApp {
 	public partial class App : PrismApplication {
@@ -9,14 +8,13 @@ namespace ChatApp {
 		protected override void OnInitialized () {
 			InitializeComponent();
 
-			MainPage = new ContentPage();
-			NavigationService.NavigateAsync( "MainNavigationPage/LoginPage" );
+			NavigationService.NavigateAsync( "MainNavigationPage/LoginPage", animated:false );
 		}
 
 		protected override void RegisterTypes () {
 			Container.RegisterTypeForNavigation<MainNavigationPage>();
 			Container.RegisterTypeForNavigation<LoginPage>();
-			Container.RegisterTypeForNavigation<ViewChanelPage>();
+			Container.RegisterTypeForNavigation<ChanelsListPage>();
 		}
 	}
 }
