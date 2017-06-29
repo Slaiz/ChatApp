@@ -9,10 +9,14 @@ namespace ChatApp {
 		protected override void OnInitialized () {
 			InitializeComponent();
 
-			NavigationService.NavigateAsync( "" );
+			MainPage = new ContentPage();
+			NavigationService.NavigateAsync( "MainNavigationPage/LoginPage" );
 		}
 
 		protected override void RegisterTypes () {
+			Container.RegisterTypeForNavigation<MainNavigationPage>();
+			Container.RegisterTypeForNavigation<LoginPage>();
+			Container.RegisterTypeForNavigation<ViewChanelPage>();
 		}
 	}
 }

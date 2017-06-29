@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ChatApp.Views.LoginPage"			 
+			 BackgroundColor="{StaticResource MainColor}">
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="1*"/>
+			<ColumnDefinition Width="9*"/>
+			<ColumnDefinition Width="1*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<Grid Grid.Row="1"
+				Grid.Column="1"
+				HorizontalOptions="Fill"
+				BackgroundColor="White"
+				RowSpacing="10">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="2*"/>
+				<RowDefinition Height="2*"/>
+				<RowDefinition Height="2*"/>
+			</Grid.RowDefinitions>
+			<Entry  Grid.Row="0"
+					Margin="20,10"
+					HeightRequest="50"
+					Style="{StaticResource LoginEntryStyle}" 
+					Placeholder="Username"
+					Text="{Binding Username, Mode=TwoWay}">
+			</Entry>
+			<Entry  Grid.Row="1"
+					Margin="20,10"
+					HeightRequest="50"
+					Placeholder="Password"
+					Keyboard="Text"
+					IsPassword="true"
+					Text="{Binding Password, Mode=TwoWay}" />
+			<Button Grid.Row="2"
+					Margin="20,10"
+					Text="Sign in"
+					Style="{StaticResource BlueButtonStyle}"
+					Command="{Binding LogInCommand}"/>
+		</Grid>
+	</Grid>
+</ContentPage>
